@@ -15,6 +15,8 @@ library(tidyverse)
 library(ggplot2)
 library(scales)
 library(plotly)
+library(tidyr)
+library(purrr)
 ##################################
 # Set file directories
 ##################################
@@ -25,7 +27,7 @@ processed_dir = here("processed/")
 ##################################
 # Set file paths 
 ##################################
-raw_data_path = paste0(raw_dir, "gridwatch.csv")
+processed_merge_data_path = paste0(processed_dir, "gridwatch_merge.csv")
 processed_data_path = paste0(processed_dir, "gridwatch_processed.csv")
 processed_unique_years_path = paste0(processed_dir, "gridwatch_unique_years.csv")
 
