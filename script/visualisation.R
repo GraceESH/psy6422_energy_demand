@@ -37,6 +37,7 @@ visualisation <- ggplot()
 for (i in 1:nrow(processed_unique_years)) {
   row <- processed_unique_years[i,]
   row_data <- filter(processed_data, year == row$year)
+  
   visualisation <-
     visualisation + geom_line(
       data = row_data,
@@ -59,19 +60,22 @@ for (i in 1:nrow(processed_unique_years)) {
 
 visualisation <-
   visualisation + scale_x_date(date_labels = "%b", date_breaks = "1 month") +
-  labs(x = "Month", y = "Average monthly demand (GW)", color = "Year") +
+  labs(x = "Month", y = "Average monthly demand (GW)", color = "Year", 
+       title = "Electrical demand on the national grid \n before, during and after Covid-19 lockdowns") +
   theme_bw() +
   theme(
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor.y = element_blank(),
-    plot.margin = margin(10, 10, 10, 10, "mm")
+    text = element_text(family = "Times New Roman"),
+    plot.title = element_text(hjust = 0.5, size = 20),
+    panel.grid.major.y = element_blank(), #removing the horizontal background lines
+    panel.grid.minor.y = element_blank(), 
+    plot.margin = margin(20, 10, 20, 10, "mm") #creating more space around the graph
   )
 
 ggplotly(visualisation, tooltip = c("text"))
 
 #saving the plot
 ggsave(
-  filename = here(figs_dir, "visualisation_2.png"),
-  width = 8,
-  height = 5
-)
+  filename = here(figs_dir, "final.png")
+#   width = 8,
+#   height = 5
+ )
