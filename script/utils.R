@@ -2,7 +2,7 @@
 # MSc data visualisation project examining energy demand over time
 # and the impact of covid-19
 #
-# Author: Shepherd_220225638
+# Author: 220225638
 # Date: 2023-04-23
 # Description: Utility functions
 #########################################

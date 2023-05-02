@@ -1,0 +1,22 @@
+Data source:
+The raw data set was scrapped from Gridwatch on 2023-04-29: https://gridwatch.templar.co.uk/download.php
+It was obtained in 1 year chunks from 2012 to 2022. e.g. for 2012 the start time was 00:00 01 Jan 2012 until 23:55 31 Dec 2012.   
+
+The raw data set can be found in the folder "raw" and filenames are in the format of gridwatch_year.csv e.g. gridwatch_2012.csv. Each file contains three columns.
+
+Variable description and units:
+
+id : is the unique identifier for each row recorded. In the format of numeric characters 
+
+timestamp : is the date and time of when the data was scrapped from BM reports site provided by Elexon which has               near to real time grid data. In the format of yyyy-mm-dd h:m:s
+
+demand : this is recorded by central metering. It is the demand for the entire country (excluding exports)                  however actual demand would be higher but that is met by sources such as domestic solar panels and small           wind turbines. In the format of megawatts (MW)
+
+The following data sets can be found in the "processed" folder and were created from the raw data described above.
+
+gridwatch_merge.csv : This is all of the raw csv files merged into one. It was four columns: filename, id,                              timestamp and demand 
+
+gridwatch_unique_years.csv : This contains two columns: year and month_count. Year is a distinct value retrieved                                from timestamp column within the raw data. month_count is the number of months                                    within the year.
+
+gridwatch_processed.csv : This contains three columns which is the agrigated raw data grouped by year and month.                            year is in the format yyyy. group_month is in the the format of yyyy-mm-dd, where yyyy                            is hardcoded year 2023, month is retrieved from timestamp and the day is also hardcoded                           as 01. average_per_month is the mean demand divided by 1000 to get the units to be                                gigawatts 
+
